@@ -8,8 +8,11 @@ const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 const jetbrainsMono = JetBrains_Mono({ subsets: ['latin'], variable: '--font-jetbrains-mono' })
 
 export const metadata: Metadata = {
-  title: 'Anushka Lakmal | Backend & DevOps Engineer',
+  title: 'Anushka Lakmal',
   description: 'Portfolio of Anushka Lakmal - Aspiring Backend, DevOps & Cloud Engineer. BSc Computer Science undergraduate passionate about building scalable systems and infrastructure.',
+  icons: {
+    icon: "/e:\favicon_io\favicon.ico",
+  },
   keywords: ['Backend Developer', 'DevOps Engineer', 'Cloud Engineer', 'Portfolio', 'Computer Science', 'AWS', 'Kubernetes', 'Docker'],
   authors: [{ name: 'Anushka Lakmal' }],
   creator: 'Anushka Lakmal',

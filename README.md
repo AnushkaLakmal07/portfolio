@@ -55,5 +55,3 @@ portfolio/
 - **GitHub:** [AnushkaLakmal07](https://github.com/AnushkaLakmal07)
 
 ---
-
-⭐ If you like this project, give it a star on GitHub!
