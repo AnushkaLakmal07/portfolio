@@ -7,33 +7,41 @@ const skillCategories = [
   {
     title: 'Languages',
     icon: Code2,
-    skills: ['Python', 'JavaScript', 'TypeScript', 'Go', 'Bash', 'SQL'],
+    skills: ['Python', 'JavaScript', 'Java', 'C', 'SQL'],
   },
   {
     title: 'Backend',
     icon: Terminal,
-    skills: ['Node.js', 'Express', 'FastAPI', 'REST APIs', 'GraphQL', 'gRPC'],
+    skills: ['Node.js', 'Python', 'FastAPI', 'REST APIs'],
   },
   {
     title: 'Databases',
     icon: Database,
-    skills: ['PostgreSQL', 'MongoDB', 'Redis', 'MySQL', 'Elasticsearch'],
+    skills: ['PostgreSQL', 'MongoDB', 'Redis'],
   },
   {
     title: 'DevOps',
     icon: GitBranch,
-    skills: ['Docker', 'Kubernetes', 'Terraform', 'Ansible', 'Jenkins', 'GitHub Actions'],
+    skills: ['Docker', 'GitHub Actions'],
   },
   {
     title: 'Cloud',
     icon: Cloud,
-    skills: ['AWS', 'GCP', 'Azure', 'Vercel', 'DigitalOcean', 'Cloudflare'],
+    skills: ['AWS'],
   },
+
   {
-    title: 'Monitoring',
-    icon: Monitor,
-    skills: ['Prometheus', 'Grafana', 'ELK Stack', 'Datadog', 'New Relic'],
+  title: 'Monitoring',
+  icon: Monitor,
+  skills: ['Git', 'GitHub', 'VS Code', 'Postman'],
   },
+
+  {
+  title: 'Frameworks',
+  icon: Monitor,
+  skills: ['React', 'Next.js', 'Electron.js', '.NET'],
+  },
+
 ]
 
 export function Skills() {
@@ -46,21 +54,21 @@ export function Skills() {
           {skillCategories.map((category) => (
             <Card
               key={category.title}
-              className="bg-card/50 backdrop-blur-sm border-border/50 hover:border-primary/50 transition-colors"
+              className="group bg-card/50 backdrop-blur-sm border-border/50 hover:bg-card hover:border-primary/50 hover:-translate-y-2 hover:shadow-xl hover:shadow-primary/10 transition-all duration-500"
             >
               <CardHeader className="pb-3">
-                <CardTitle className="flex items-center gap-3 text-lg">
-                  <category.icon className="size-5 text-primary" />
+                <CardTitle className="flex items-center gap-3 text-xl font-semibold tracking-tight">
+                  <category.icon className="size-6 text-primary transition-transform duration-500 group-hover:scale-110" />
                   {category.title}
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-3">
                   {category.skills.map((skill) => (
                     <Badge
                       key={skill}
                       variant="secondary"
-                      className="bg-secondary hover:bg-primary hover:text-primary-foreground transition-colors cursor-default"
+                      className="px-4 py-1.5 text-sm font-medium tracking-wide bg-secondary border border-transparent hover:border-primary/20 hover:bg-primary hover:text-primary-foreground hover:scale-105 hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/30 transition-all duration-300 cursor-default"
                     >
                       {skill}
                     </Badge>

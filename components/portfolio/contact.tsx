@@ -64,22 +64,34 @@ export function Contact() {
     setIsSubmitting(true)
 
     try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
-      })
+      // Open Webmail in a new tab intelligently based on the email domain
+      const emailTo = 'anushkalakmal0607@gmail.com'
+      const defaultSubject = `Portfolio Contact from ${form.name}`
+      const subject = encodeURIComponent(form.subject || defaultSubject)
+      const body = encodeURIComponent(
+        `Name: ${form.name}\nEmail: ${form.email}\n\nMessage:\n${form.message}`
+      )
 
-      if (!response.ok) {
-        const data = await response.json()
-        throw new Error(data.error || 'Failed to send message')
+      const userEmail = form.email.toLowerCase()
+      let webmailUrl = ''
+
+      if (userEmail.includes('@outlook.') || userEmail.includes('@hotmail.') || userEmail.includes('@live.')) {
+        webmailUrl = `https://outlook.live.com/mail/0/deeplink/compose?to=${emailTo}&subject=${subject}&body=${body}`
+      } else if (userEmail.includes('@yahoo.')) {
+        webmailUrl = `https://compose.mail.yahoo.com/?to=${emailTo}&subject=${subject}&body=${body}`
+      } else {
+        // Default to Gmail
+        webmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${emailTo}&su=${subject}&body=${body}`
       }
 
-      toast.success('Message sent successfully! I\'ll get back to you soon.')
+      // Open the composed email in a new tab
+      window.open(webmailUrl, '_blank')
+
+      toast.success('Opening your webmail to send the message!')
       setForm({ name: '', email: '', subject: '', message: '' })
       setErrors({})
     } catch (error) {
-      toast.error(error instanceof Error ? error.message : 'Failed to send message')
+      toast.error('Failed to process message')
     } finally {
       setIsSubmitting(false)
     }
@@ -98,12 +110,11 @@ export function Contact() {
   return (
     <section id="contact" className="py-24 px-6">
       <div className="max-w-2xl mx-auto text-center">
-        <SectionHeading number={5} title="Get In Touch" />
+        <SectionHeading number={5} title="Contact Me" />
 
         <p className="text-muted-foreground mb-8 leading-relaxed">
-          I&apos;m currently looking for new opportunities and my inbox is always open.
-          Whether you have a question, want to collaborate on a project, or just
-          want to say hi, I&apos;ll try my best to get back to you!
+          I&apos;m always open to discussing new opportunities. Feel free to drop me a message. 
+        <br />I&apos;ll try my best to get back to you !
         </p>
 
         <form onSubmit={handleSubmit} className="text-left">
@@ -169,7 +180,7 @@ export function Contact() {
             <Button
               type="submit"
               size="lg"
-              className="w-full md:w-auto"
+              className="w-full md:w-auto transition-all duration-300 border border-primary hover:bg-transparent hover:text-primary hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/20"
               disabled={isSubmitting}
             >
               {isSubmitting ? (
