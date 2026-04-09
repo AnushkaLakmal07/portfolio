@@ -64,9 +64,7 @@ export function Hero() {
 
           {/* Description */}
           <p className="text-muted-foreground text-base md:text-lg mb-8 leading-relaxed max-w-xl text-pretty">
-            I&apos;m a Computer Science undergraduate specializing in backend development,
-            DevOps practices, and cloud infrastructure. Currently focused on building
-            scalable, reliable systems and automating everything.
+            I&apos;m a ICT undergraduate with a focus on Software Technology Currently building my skills in web development while working towards becoming a DevOps and cloud engineer.
           </p>
 
           {/* CTA Buttons */}
@@ -82,7 +80,7 @@ export function Hero() {
           {/* Social Links */}
           <div className="flex items-center justify-center md:justify-start gap-6">
             <a
-              href="https://github.com/anushka"
+              href="https://github.com/AnushkaLakmal07"
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-primary transition-all duration-300 hover:-translate-y-1"
@@ -91,7 +89,7 @@ export function Hero() {
               <Github className="size-6" />
             </a>
             <a
-              href="https://linkedin.com/in/anushka"
+              href="https://www.linkedin.com/in/anushka-lakmal/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-primary transition-all duration-300 hover:-translate-y-1"
@@ -99,13 +97,13 @@ export function Hero() {
             >
               <Linkedin className="size-6" />
             </a>
-            <a
-              href="mailto:anushka@example.com"
+            <Link
+              href="#contact"
               className="text-muted-foreground hover:text-primary transition-all duration-300 hover:-translate-y-1"
-              aria-label="Email"
+              aria-label="Contact Section"
             >
               <Mail className="size-6" />
-            </a>
+            </Link>
           </div>
         </div>
 
