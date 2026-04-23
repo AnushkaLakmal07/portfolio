@@ -185,10 +185,11 @@ function CarouselPrevious({
       variant={variant}
       size={size}
       className={cn(
-        'absolute size-8 rounded-full',
+        'absolute h-10 w-10 rounded-full transition-all duration-500 ease-in-out hover:scale-110 hover:bg-green-500/20 hover:text-green-500 hover:border-green-500/50 hover:shadow-[0_0_20px_rgba(34,197,94,0.2)] z-50',
         orientation === 'horizontal'
-          ? 'top-1/2 -left-12 -translate-y-1/2'
+          ? 'top-1/2 -left-14 -translate-y-1/2'
           : '-top-12 left-1/2 -translate-x-1/2 rotate-90',
+        !canScrollPrev ? 'opacity-0 cursor-default pointer-events-none scale-90' : 'opacity-100 scale-100',
         className,
       )}
       disabled={!canScrollPrev}
@@ -215,10 +216,11 @@ function CarouselNext({
       variant={variant}
       size={size}
       className={cn(
-        'absolute size-8 rounded-full',
+        'absolute h-10 w-10 rounded-full transition-all duration-500 ease-in-out hover:scale-110 hover:bg-green-500/20 hover:text-green-500 hover:border-green-500/50 hover:shadow-[0_0_20px_rgba(34,197,94,0.2)] z-50',
         orientation === 'horizontal'
-          ? 'top-1/2 -right-12 -translate-y-1/2'
+          ? 'top-1/2 -right-14 -translate-y-1/2'
           : '-bottom-12 left-1/2 -translate-x-1/2 rotate-90',
+        !canScrollNext ? 'opacity-0 cursor-default pointer-events-none scale-90' : 'opacity-100 scale-100',
         className,
       )}
       disabled={!canScrollNext}
@@ -231,6 +233,55 @@ function CarouselNext({
   )
 }
 
+function CarouselDots({ className, ...props }: React.ComponentProps<'div'>) {
+  const { api } = useCarousel()
+  const [selectedIndex, setSelectedIndex] = React.useState(0)
+  const [scrollSnaps, setScrollSnaps] = React.useState<number[]>([])
+
+  React.useEffect(() => {
+    if (!api) return
+
+    const onInit = () => {
+      setScrollSnaps(api.scrollSnapList())
+      setSelectedIndex(api.selectedScrollSnap())
+    }
+
+    const onSelect = () => {
+      setSelectedIndex(api.selectedScrollSnap())
+    }
+
+    onInit()
+    api.on('reInit', onInit)
+    api.on('select', onSelect)
+
+    return () => {
+      api.off('reInit', onInit)
+      api.off('select', onSelect)
+    }
+  }, [api])
+
+  if (scrollSnaps.length <= 1) return null
+
+  return (
+    <div className={cn('flex items-center justify-center gap-2', className)} {...props}>
+      {scrollSnaps.map((_, index) => (
+        <button
+          key={index}
+          type="button"
+          aria-label={`Go to slide ${index + 1}`}
+          onClick={() => api?.scrollTo(index)}
+          className={cn(
+            'h-2 rounded-full transition-all duration-500 ease-in-out',
+            index === selectedIndex
+              ? 'w-3 bg-green-500 shadow-[0_0_10px_rgba(34,197,94,0.5)]'
+              : 'w-2 bg-white/20 hover:bg-white/40 hover:scale-125'
+          )}
+        />
+      ))}
+    </div>
+  )
+}
+
 export {
   type CarouselApi,
   Carousel,
@@ -238,4 +289,5 @@ export {
   CarouselItem,
   CarouselPrevious,
   CarouselNext,
+  CarouselDots,
 }

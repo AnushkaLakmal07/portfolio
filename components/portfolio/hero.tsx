@@ -15,7 +15,7 @@ export function Hero() {
         <div className="flex-1 text-center md:text-left flex flex-col items-center md:items-start max-w-2xl">
           {/* Greeting */}
           <div className="mb-4 inline-block">
-            <p 
+            <p
               className="text-primary font-mono text-lg md:text-xl font-semibold tracking-wide overflow-hidden whitespace-nowrap border-r-[3px] border-primary pr-1"
               style={{
                 width: '15.5ch',

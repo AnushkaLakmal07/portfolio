@@ -3,9 +3,9 @@ import { Card, CardContent } from '@/components/ui/card'
 
 const experiences = [
   {
-    title: 'BSc Computer Science',
-    organization: 'University',
-    period: '2022 - Present',
+    title: 'Bachelor of Information and Communication Technology (Honours) Degree',
+    organization: 'Uva Wellassa University of Sri Lanka',
+    period: '2023 - Present',
     description:
       'Currently pursuing my degree with a focus on software engineering, distributed systems, and cloud computing. Maintaining strong academic performance while working on personal projects.',
     highlights: [
