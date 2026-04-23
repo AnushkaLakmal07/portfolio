@@ -4,6 +4,14 @@ import useSWR from 'swr'
 import { SectionHeading } from './section-heading'
 import { ProjectCard } from './project-card'
 import { Skeleton } from '@/components/ui/skeleton'
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+  CarouselDots,
+} from '@/components/ui/carousel'
 
 interface Project {
   id: string
@@ -11,8 +19,12 @@ interface Project {
   description: string
   long_description: string | null
   image_url: string | null
+  image_urls?: string[]
+  video_url?: string | null
+  youtube_url?: string | null
   technologies: string[]
   github_url: string | null
+  github_urls?: { label: string; url: string }[]
   live_url: string | null
   featured: boolean
 }
@@ -26,31 +38,55 @@ export function Projects() {
   const otherProjects = projects?.filter((p) => !p.featured) || []
 
   return (
-    <section id="projects" className="py-24 px-6">
+    <section id="projects" className="py-10 md:py-12 px-6">
       <div className="max-w-6xl mx-auto">
         <SectionHeading number={3} title="Projects" />
 
         {/* Featured Projects */}
-        <div className="space-y-24 mb-16">
-          {isLoading ? (
-            <>
-              <ProjectSkeleton />
-              <ProjectSkeleton />
-            </>
-          ) : error ? (
-            <p className="text-muted-foreground text-center">
-              Failed to load projects. Please try again later.
-            </p>
-          ) : (
-            featuredProjects.map((project, index) => (
-              <ProjectCard
-                key={project.id}
-                project={project}
-                featured
-                reverse={index % 2 === 1}
-              />
-            ))
-          )}
+        <div className="relative px-12 mb-10">
+          <Carousel
+            opts={{
+              align: 'start',
+            }}
+            className="w-full"
+          >
+            <CarouselContent className="-ml-6">
+              {isLoading ? (
+                <>
+                  <CarouselItem className="pl-6 md:basis-1/2 lg:basis-1/3">
+                    <ProjectSkeleton />
+                  </CarouselItem>
+                  <CarouselItem className="pl-6 md:basis-1/2 lg:basis-1/3">
+                    <ProjectSkeleton />
+                  </CarouselItem>
+                  <CarouselItem className="pl-6 md:basis-1/2 lg:basis-1/3">
+                    <ProjectSkeleton />
+                  </CarouselItem>
+                  <CarouselItem className="pl-6 md:basis-1/2 lg:basis-1/3">
+                    <ProjectSkeleton />
+                  </CarouselItem>
+                </>
+              ) : error ? (
+                <p className="text-muted-foreground text-center w-full py-10">
+                  Failed to load projects. Please try again later.
+                </p>
+              ) : (
+                featuredProjects.map((project) => (
+                  <CarouselItem key={project.id} className="pl-6 md:basis-1/2 lg:basis-1/3 h-auto">
+                    <ProjectCard
+                      project={project}
+                      featured
+                    />
+                  </CarouselItem>
+                ))
+              )}
+            </CarouselContent>
+            <CarouselPrevious className="bg-[#1e2329]/80 h-10 w-10 border-white/10 text-white hover:bg-[#252b32] hover:text-green-500 transition-colors" />
+            <CarouselNext className="bg-[#1e2329]/80 h-10 w-10 border-white/10 text-white hover:bg-[#252b32] hover:text-green-500 transition-colors" />
+            
+            {/* Pagination Dots */}
+            <CarouselDots className="mt-8" />
+          </Carousel>
         </div>
 
         {/* Other Projects */}
@@ -73,18 +109,17 @@ export function Projects() {
 
 function ProjectSkeleton() {
   return (
-    <div className="grid md:grid-cols-12 gap-4 items-center">
-      <div className="md:col-span-7">
-        <Skeleton className="w-full aspect-video rounded-lg" />
-      </div>
-      <div className="md:col-span-5 space-y-4">
-        <Skeleton className="h-4 w-24" />
-        <Skeleton className="h-8 w-48" />
-        <Skeleton className="h-24 w-full" />
-        <div className="flex gap-2">
-          <Skeleton className="h-6 w-16" />
-          <Skeleton className="h-6 w-16" />
-          <Skeleton className="h-6 w-16" />
+    <div className="flex flex-col bg-[#1e2329]/80 border border-white/10 rounded-3xl overflow-hidden h-[500px]">
+      <Skeleton className="w-full aspect-[4/3] rounded-none opacity-20" />
+      <div className="flex flex-col flex-1 p-7 space-y-4">
+        <Skeleton className="h-7 w-3/4 opacity-20" />
+        <Skeleton className="h-4 w-full opacity-20 mt-4" />
+        <Skeleton className="h-4 w-full opacity-20" />
+        <Skeleton className="h-4 w-2/3 opacity-20" />
+        <div className="pt-6 mt-auto flex gap-2">
+          <Skeleton className="h-6 w-16 rounded-full opacity-20" />
+          <Skeleton className="h-6 w-16 rounded-full opacity-20" />
+          <Skeleton className="h-6 w-16 rounded-full opacity-20" />
         </div>
       </div>
     </div>
