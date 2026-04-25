@@ -1,3 +1,4 @@
+<meta name="google-site-verification" content="Xy08lDhYUqIZFSqqOOGgj4oBPgLNQFD7Vh4Xx59zk8I" />
 import type { Metadata, Viewport } from 'next'
 import { Inter, JetBrains_Mono } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
@@ -14,6 +15,9 @@ export const metadata: Metadata = {
     icon: "/e:\favicon_io\favicon.ico",
   },
   keywords: ['Backend Developer', 'DevOps Engineer', 'Cloud Engineer', 'Portfolio', 'Computer Science', 'AWS', 'Kubernetes', 'Docker'],
+  verification: {
+    google: 'Xy08lDhYUqIZFSqqOOGgj4oBPgLNQFD7Vh4Xx59zk8I',
+  },
   authors: [{ name: 'Anushka Lakmal' }],
   creator: 'Anushka Lakmal',
   openGraph: {
