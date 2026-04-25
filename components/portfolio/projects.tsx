@@ -40,7 +40,7 @@ export function Projects() {
   return (
     <section id="projects" className="py-10 md:py-12 px-6">
       <div className="max-w-6xl mx-auto">
-        <SectionHeading number={3} title="Projects" />
+        <SectionHeading title="Projects" />
 
         {/* Featured Projects */}
         <div className="relative px-12 mb-10">

@@ -4,7 +4,7 @@ export function About() {
   return (
     <section id="about" className="py-24 px-6">
       <div className="max-w-4xl mx-auto">
-        <SectionHeading number={1} title="About Me" />
+        <SectionHeading title="About Me" />
 
         <div className="w-full">
           <div className="w-full space-y-4 text-muted-foreground leading-relaxed">
