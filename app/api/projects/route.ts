@@ -56,6 +56,11 @@ const projects = [
     title: 'Smart Inventory Management Platform',
     description: 'Developed a high-performance desktop inventory management system for SMEs using JavaFX, built on a modular OOP architecture with role-based access control. Designed and implemented a scalable, multi-layered system structure with a rigorous JUnit 5 testing suite, ensuring full system reliability and maintainability.',
     image_url: null,
+    image_urls: [
+      '/images/inventory01.jpeg',
+      '/images/inventory02.jpeg',
+      '/images/inventory03.jpeg'
+    ],
     video_url: null,
     technologies: ['JAVAFX', 'SQLITE', 'MAVEN', 'JUNIT', 'GIT'],
     github_url: 'https://github.com/logicsimplifier/inventory-management-system',

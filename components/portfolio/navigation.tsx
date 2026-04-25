@@ -10,7 +10,7 @@ const navLinks = [
   { href: '#about', label: 'About' },
   { href: '#skills', label: 'Skills' },
   { href: '#projects', label: 'Projects' },
-  { href: '#experience', label: 'Experience' },
+  { href: '#achievements', label: 'Achievements' },
   { href: '#contact', label: 'Contact' },
 ]
 
@@ -40,14 +40,15 @@ export function Navigation() {
           href="/"
           className="flex items-center gap-3 group transition-all duration-300"
         >
-          <div className="relative flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 border border-primary/20 shadow-sm overflow-hidden transition-all duration-300 group-hover:shadow-primary/25 group-hover:border-primary/50 group-hover:-translate-y-0.5">
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-            <div className="absolute inset-0 bg-primary/10 scale-0 rounded-full group-hover:scale-150 transition-transform duration-500 ease-out" />
-            <span className="relative font-mono font-bold text-primary text-lg z-10">AL</span>
+          <div className="relative flex h-12 w-12 items-center justify-center rounded-2xl border border-primary/30 bg-gradient-to-br from-primary/30 via-primary/10 to-transparent shadow-[0_0_22px_rgba(34,197,94,0.25)] transition-all duration-300 group-hover:-translate-y-0.5 group-hover:shadow-[0_0_28px_rgba(34,197,94,0.35)]">
+            <span className="text-sm font-extrabold tracking-[0.2em] text-white">AL</span>
           </div>
           <div className="hidden sm:flex items-center">
-            <span className="font-bold text-xl tracking-tight bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent group-hover:from-primary group-hover:to-primary/80 transition-colors duration-300">
-              Anushka
+            <span className="relative font-extrabold text-[20px] tracking-wider text-white transition-all duration-300 group-hover:-translate-y-0.5 group-hover:text-primary group-hover:drop-shadow-[0_0_14px_rgba(34,197,94,0.45)]">
+              <span className="bg-gradient-to-r from-white via-white to-primary bg-[length:220%_100%] bg-left bg-clip-text text-transparent transition-all duration-500 group-hover:bg-right">
+                ANUSHKA
+              </span>
+              <span className="left-0 h-[2px] w-full origin-left scale-x-0 rounded-full bg-primary/80 shadow-[0_0_10px_rgba(34,197,94,0.45)] transition-transform duration-500 group-hover:scale-x-100" />
             </span>
           </div>
         </Link>

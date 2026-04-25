@@ -48,7 +48,7 @@ export function Skills() {
   return (
     <section id="skills" className="py-24 px-6 bg-secondary/30">
       <div className="max-w-6xl mx-auto">
-        <SectionHeading number={2} title="Skills & Technologies" />
+        <SectionHeading title="Skills & Technologies" />
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {skillCategories.map((category) => (
@@ -58,7 +58,7 @@ export function Skills() {
             >
               <CardHeader className="pb-3">
                 <CardTitle className="flex items-center gap-3 text-xl font-semibold tracking-tight">
-                  <category.icon className="size-6 text-primary transition-transform duration-500 group-hover:scale-110" />
+                  <category.icon className="size-4 text-primary transition-transform duration-500 group-hover:scale-110" />
                   {category.title}
                 </CardTitle>
               </CardHeader>

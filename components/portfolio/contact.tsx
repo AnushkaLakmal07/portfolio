@@ -110,12 +110,14 @@ export function Contact() {
   return (
     <section id="contact" className="py-24 px-6">
       <div className="max-w-2xl mx-auto text-center">
-        <SectionHeading number={5} title="Contact Me" />
+        <SectionHeading title="Contact Me" />
 
-        <p className="text-muted-foreground mb-8 leading-relaxed">
-          I&apos;m always open to discussing new opportunities. Feel free to drop me a message. 
-        <br />I&apos;ll try my best to get back to you !
+        <p className="text-muted-foreground mb-8 leading-relaxed text-base max-w-lg mx-auto">
+          Whether you have a project in mind, an opportunity to discuss or just want to connect my inbox is always open. 
+          <br /> <br />
+          <span className="text-primary font-medium">Let&apos;s build something amazing together !</span>
         </p>
+        <br />
 
         <form onSubmit={handleSubmit} className="text-left">
           <FieldGroup>
