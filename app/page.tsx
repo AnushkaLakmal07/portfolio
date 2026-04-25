@@ -7,6 +7,7 @@ import {
   Experience,
   Contact,
   Footer,
+  ScrollToTop,
 } from '@/components/portfolio'
 
 export default function HomePage() {
@@ -22,6 +23,7 @@ export default function HomePage() {
         <Contact />
       </main>
       <Footer />
+      <ScrollToTop />
     </>
   )
 }
