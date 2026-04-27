@@ -36,10 +36,59 @@ export function Footer() {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer className="bg-[#0b0d11] border-t border-white/5 pt-16 pb-8">
+    <footer className="bg-[#0b0d11] border-t border-white/5 pt-8 pb-6 md:pt-16 md:pb-8">
       <div className="max-w-6xl mx-auto px-6">
-        {/* Top Section: 3 Columns */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8 mb-16">
+        {/* Mobile: compact footer */}
+        <div className="md:hidden flex flex-col gap-4">
+          <div className="flex items-center justify-between gap-4">
+            <Link href="/" className="flex items-center gap-2 w-fit">
+              <div className="relative flex h-10 w-10 items-center justify-center rounded-2xl border border-primary/30 bg-gradient-to-br from-primary/30 via-primary/10 to-transparent shadow-[0_0_18px_rgba(34,197,94,0.22)]">
+                <span className="text-[11px] font-extrabold tracking-[0.2em] text-white">AL</span>
+              </div>
+              <span className="font-bold text-[16px] tracking-wider text-white/90">
+                ANUSHKA
+              </span>
+            </Link>
+
+            <div className="flex items-center gap-2">
+              {socialLinks.slice(0, 3).map((link) => {
+                const isInternalLink = link.href.startsWith('#')
+                return (
+                  <a
+                    key={link.name}
+                    href={link.href}
+                    target={isInternalLink ? undefined : '_blank'}
+                    rel={isInternalLink ? undefined : 'noopener noreferrer'}
+                    aria-label={link.name}
+                    className="w-9 h-9 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-muted-foreground hover:bg-primary/10 hover:text-primary hover:border-primary/30 transition-colors"
+                  >
+                    <link.icon className="size-4" />
+                  </a>
+                )
+              })}
+            </div>
+          </div>
+
+          {/* Mobile nav links (same as desktop, compact) */}
+          <div className="flex flex-wrap gap-x-4 gap-y-2">
+            {navigationLinks.map((link) => (
+              <Link
+                key={link.name}
+                href={link.href}
+                className="text-[12px] font-medium text-muted-foreground/70 hover:text-primary transition-colors"
+              >
+                {link.name}
+              </Link>
+            ))}
+          </div>
+
+          <p className="text-muted-foreground/65 text-xs font-medium">
+            © {currentYear} Anushka Lakmal
+          </p>
+        </div>
+
+        {/* Desktop: full footer */}
+        <div className="hidden md:grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8 mb-0 md:mb-16">
           
           {/* Column 1: Brand & Bio */}
           <div className="md:col-span-6 lg:col-span-5 flex flex-col gap-6">
@@ -98,7 +147,7 @@ export function Footer() {
                 )
               })}
             </div>
-            <p className="mt-30 text-muted-foreground/60 text-xs font-medium">
+            <p className="mt-6 text-muted-foreground/60 text-xs font-medium">
               © {currentYear} Anushka Lakmal. Professional Portfolio.
             </p>
           </div>

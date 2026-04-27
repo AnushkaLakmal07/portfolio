@@ -38,31 +38,31 @@ export function Projects() {
   const otherProjects = projects?.filter((p) => !p.featured) || []
 
   return (
-    <section id="projects" className="py-10 md:py-12 px-6">
+    <section id="projects" className="py-10 md:py-24 px-6">
       <div className="max-w-6xl mx-auto">
         <SectionHeading title="Projects" />
 
         {/* Featured Projects */}
-        <div className="relative px-12 mb-10">
+        <div className="relative px-0 sm:px-12 mb-8 md:mb-10">
           <Carousel
             opts={{
               align: 'start',
             }}
             className="w-full"
           >
-            <CarouselContent className="-ml-6">
+            <CarouselContent className="-ml-4 sm:-ml-6 items-stretch">
               {isLoading ? (
                 <>
-                  <CarouselItem className="pl-6 md:basis-1/2 lg:basis-1/3">
+                  <CarouselItem className="pl-4 sm:pl-6 md:basis-1/2 lg:basis-1/3">
                     <ProjectSkeleton />
                   </CarouselItem>
-                  <CarouselItem className="pl-6 md:basis-1/2 lg:basis-1/3">
+                  <CarouselItem className="pl-4 sm:pl-6 md:basis-1/2 lg:basis-1/3">
                     <ProjectSkeleton />
                   </CarouselItem>
-                  <CarouselItem className="pl-6 md:basis-1/2 lg:basis-1/3">
+                  <CarouselItem className="pl-4 sm:pl-6 md:basis-1/2 lg:basis-1/3">
                     <ProjectSkeleton />
                   </CarouselItem>
-                  <CarouselItem className="pl-6 md:basis-1/2 lg:basis-1/3">
+                  <CarouselItem className="pl-4 sm:pl-6 md:basis-1/2 lg:basis-1/3">
                     <ProjectSkeleton />
                   </CarouselItem>
                 </>
@@ -72,7 +72,7 @@ export function Projects() {
                 </p>
               ) : (
                 featuredProjects.map((project) => (
-                  <CarouselItem key={project.id} className="pl-6 md:basis-1/2 lg:basis-1/3 h-auto">
+                  <CarouselItem key={project.id} className="pl-4 sm:pl-6 md:basis-1/2 lg:basis-1/3 h-auto">
                     <ProjectCard
                       project={project}
                       featured
@@ -85,7 +85,7 @@ export function Projects() {
             <CarouselNext className="bg-[#1e2329]/80 h-10 w-10 border-white/10 text-white hover:bg-[#252b32] hover:text-green-500 transition-colors" />
             
             {/* Pagination Dots */}
-            <CarouselDots className="mt-8" />
+            <CarouselDots className="mt-6 md:mt-8" />
           </Carousel>
         </div>
 
@@ -95,7 +95,7 @@ export function Projects() {
             <h3 className="text-xl font-semibold text-center text-foreground mb-8">
               Other Noteworthy Projects
             </h3>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-fr items-stretch">
               {otherProjects.map((project) => (
                 <ProjectCard key={project.id} project={project} />
               ))}
@@ -109,8 +109,8 @@ export function Projects() {
 
 function ProjectSkeleton() {
   return (
-    <div className="flex flex-col bg-[#1e2329]/80 border border-white/10 rounded-3xl overflow-hidden h-[500px]">
-      <Skeleton className="w-full aspect-[4/3] rounded-none opacity-20" />
+    <div className="flex flex-col bg-[#1e2329]/80 border border-white/10 rounded-3xl overflow-hidden h-[520px]">
+      <Skeleton className="w-full aspect-[16/10] rounded-none opacity-20" />
       <div className="flex flex-col flex-1 p-7 space-y-4">
         <Skeleton className="h-7 w-3/4 opacity-20" />
         <Skeleton className="h-4 w-full opacity-20 mt-4" />

@@ -22,6 +22,7 @@ export function AchievementCard({ achievement }: AchievementCardProps) {
   const accentColor = categoryColors[achievement.category] ?? '#f5c842'
   const categoryIcon = categoryIcons[achievement.category] ?? <Calendar className="size-3" />
   const [currentIndex, setCurrentIndex] = useState(0)
+  const imageFit = achievement.imageFit ?? (achievement.category === 'EDUCATION' ? 'contain' : 'cover')
 
   const images =
     achievement.image_urls && achievement.image_urls.length > 0
@@ -42,14 +43,14 @@ export function AchievementCard({ achievement }: AchievementCardProps) {
 
   return (
     <div
-      className="group flex flex-col rounded-xl overflow-hidden border border-white/10 hover:border-white/20 bg-[#12151a] transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+      className="group flex flex-col h-full rounded-xl overflow-hidden border border-white/10 hover:border-white/20 bg-[#12151a] transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
       style={{
         boxShadow: `0 0 0 1px transparent`,
         transition: 'transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease',
       }}
     >
       {/* ── IMAGE SECTION ── */}
-      <div className="relative w-full h-[200px] overflow-hidden flex-shrink-0 bg-slate-900">
+      <div className="relative w-full aspect-[16/10] overflow-hidden flex-shrink-0 bg-slate-900">
         {images.length > 0 ? (
           <>
             {/* Sliding strip */}
@@ -62,7 +63,10 @@ export function AchievementCard({ achievement }: AchievementCardProps) {
                   key={i}
                   src={url}
                   alt={`${achievement.title} slide ${i + 1}`}
-                  className="w-full h-full object-cover flex-shrink-0 transition-transform duration-700 group-hover:scale-105"
+                  className={[
+                    'w-full h-full flex-shrink-0 transition-transform duration-700',
+                    imageFit === 'contain' ? 'object-contain p-3' : 'object-cover',
+                  ].join(' ')}
                 />
               ))}
             </div>
@@ -91,7 +95,7 @@ export function AchievementCard({ achievement }: AchievementCardProps) {
       </div>
 
       {/* ── TEXT SECTION ── */}
-      <div className="flex flex-col px-5 py-4 gap-2">
+      <div className="flex flex-col flex-1 px-5 py-3 md:py-4 gap-2">
 
         {/* Title */}
         <h3 className="text-white font-bold text-[0.95rem] leading-snug mt-0.5">

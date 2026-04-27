@@ -46,29 +46,31 @@ const skillCategories = [
 
 export function Skills() {
   return (
-    <section id="skills" className="py-24 px-6 bg-secondary/30">
+    <section id="skills" className="py-10 md:py-24 px-6 bg-secondary/30">
       <div className="max-w-6xl mx-auto">
         <SectionHeading title="Skills & Technologies" />
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
           {skillCategories.map((category) => (
             <Card
               key={category.title}
-              className="group bg-card/50 backdrop-blur-sm border-border/50 hover:bg-card hover:border-primary/50 hover:-translate-y-2 hover:shadow-xl hover:shadow-primary/10 transition-all duration-500"
+              className="group bg-card/60 md:bg-card/50 backdrop-blur-sm border-border/50 hover:bg-card hover:border-primary/50 transition-all duration-300 md:duration-500 rounded-xl overflow-hidden md:hover:-translate-y-2 md:hover:shadow-xl md:hover:shadow-primary/10"
             >
-              <CardHeader className="pb-3">
-                <CardTitle className="flex items-center gap-3 text-xl font-semibold tracking-tight">
-                  <category.icon className="size-4 text-primary transition-transform duration-500 group-hover:scale-110" />
+              <CardHeader className="pb-3 border-b border-white/5">
+                <CardTitle className="flex items-center gap-3 text-lg md:text-xl font-semibold tracking-tight">
+                  <span className="inline-flex size-7 md:size-8 items-center justify-center rounded-lg bg-primary/15 border border-primary/25">
+                    <category.icon className="size-4 text-primary transition-transform duration-300 group-hover:scale-110" />
+                  </span>
                   {category.title}
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="flex flex-wrap gap-3">
+                <div className="flex flex-wrap gap-2.5 md:gap-3">
                   {category.skills.map((skill) => (
                     <Badge
                       key={skill}
                       variant="secondary"
-                      className="px-4 py-1.5 text-sm font-medium tracking-wide bg-secondary border border-transparent hover:border-primary/20 hover:bg-primary hover:text-primary-foreground hover:scale-105 hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/30 transition-all duration-300 cursor-default"
+                      className="px-3.5 py-1.5 text-xs md:text-sm font-semibold tracking-wide bg-secondary/80 border border-white/10 text-foreground/90 hover:border-primary/30 hover:bg-primary hover:text-primary-foreground transition-all duration-300 cursor-default"
                     >
                       {skill}
                     </Badge>

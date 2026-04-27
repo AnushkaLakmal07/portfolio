@@ -120,9 +120,9 @@ export function Hero() {
               src="/images/profile.jpg"
               alt="Anushka Lakmal"
               fill
-              className="object-cover lg:object-top grayscale group-hover:grayscale-0 transition-all duration-500"
+              className="object-cover object-[30%_20%] grayscale group-hover:grayscale-0 transition-all duration-500"
               priority
-              sizes="(max-width: 768px) 256px, (max-width: 1024px) 320px, 400px"
+              sizes="(max-width: 760px) 256px, (max-width: 1024px) 320px, 400px"
             />
           </div>
 

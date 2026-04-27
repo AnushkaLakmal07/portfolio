@@ -26,6 +26,27 @@ export function Navigation() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  useEffect(() => {
+    if (!isMobileMenuOpen) return
+
+    const prevOverflow = document.body.style.overflow
+    const prevPaddingRight = document.body.style.paddingRight
+
+    // Prevent background page scroll when mobile menu is open.
+    document.body.style.overflow = 'hidden'
+
+    // Avoid layout shift when scrollbar disappears (desktop browsers).
+    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth
+    if (scrollbarWidth > 0) {
+      document.body.style.paddingRight = `${scrollbarWidth}px`
+    }
+
+    return () => {
+      document.body.style.overflow = prevOverflow
+      document.body.style.paddingRight = prevPaddingRight
+    }
+  }, [isMobileMenuOpen])
+
   return (
     <header
       className={cn(
@@ -43,6 +64,10 @@ export function Navigation() {
           <div className="relative flex h-12 w-12 items-center justify-center rounded-2xl border border-primary/30 bg-gradient-to-br from-primary/30 via-primary/10 to-transparent shadow-[0_0_22px_rgba(34,197,94,0.25)] transition-all duration-300 group-hover:-translate-y-0.5 group-hover:shadow-[0_0_28px_rgba(34,197,94,0.35)]">
             <span className="text-sm font-extrabold tracking-[0.2em] text-white">AL</span>
           </div>
+          {/* Mobile: simple name, Desktop: animated gradient name */}
+          <span className="sm:hidden font-extrabold text-[16px] tracking-wider text-white/90">
+            ANUSHKA
+          </span>
           <div className="hidden sm:flex items-center">
             <span className="relative font-extrabold text-[20px] tracking-wider text-white transition-all duration-300 group-hover:-translate-y-0.5 group-hover:text-primary group-hover:drop-shadow-[0_0_14px_rgba(34,197,94,0.45)]">
               <span className="bg-gradient-to-r from-white via-white to-primary bg-[length:220%_100%] bg-left bg-clip-text text-transparent transition-all duration-500 group-hover:bg-right">
@@ -89,7 +114,7 @@ export function Navigation() {
 
       {/* Mobile Navigation */}
       {isMobileMenuOpen && (
-        <div className="md:hidden bg-background/95 backdrop-blur-md border-b border-border">
+        <div className="md:hidden bg-background/95 backdrop-blur-md border-b border-border overscroll-contain">
           <ul className="flex flex-col items-center gap-6 py-8">
             {navLinks.map((link, index) => (
               <li key={link.href}>

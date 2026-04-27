@@ -40,11 +40,11 @@ export function ProjectCard({ project }: ProjectCardProps) {
   }, [project.image_urls])
 
   return (
-    <div className="group flex flex-col bg-[#1e2329]/80 backdrop-blur-md border border-white/10 rounded-3xl overflow-hidden hover:border-green-500/30 hover:shadow-[0_0_40px_rgba(34,197,94,0.15)] hover:-translate-y-2 transition-all duration-500 h-full">
+    <div className="group flex flex-col bg-[#1e2329]/80 backdrop-blur-md border border-white/10 rounded-xl md:rounded-3xl overflow-hidden hover:border-white/20 md:hover:border-green-500/30 hover:shadow-xl md:hover:shadow-[0_0_40px_rgba(34,197,94,0.15)] hover:-translate-y-1 md:hover:-translate-y-2 transition-all duration-300 md:duration-500 h-full min-h-[620px] md:min-h-[600px]">
       {/* Media Header */}
-      <div className="relative aspect-[4/3] overflow-hidden bg-[#121519] flex-shrink-0">
+      <div className="relative w-full aspect-[16/10] overflow-hidden bg-[#121519] flex-shrink-0">
         {project.image_urls && project.image_urls.length > 0 ? (
-          <div className="w-full h-full transition-transform duration-10000 group-hover:scale-105">
+          <div className="w-full h-full">
             <div
               className="flex w-full h-full transition-transform duration-1000 ease-in-out"
               style={{ transform: `translateX(-${currentIndex * 100}%)` }}
@@ -54,7 +54,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
                   key={i}
                   src={url}
                   alt={`${project.title} slide ${i + 1}`}
-                  className="w-full h-full object-contain flex-shrink-0"
+                  className="w-full h-full object-cover flex-shrink-0 transition-transform duration-700"
                 />
               ))}
             </div>
@@ -62,7 +62,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
         ) : project.video_url ? (
           <video
             src={project.video_url}
-            className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105"
+            className="w-full h-full object-cover transition-transform duration-700"
             autoPlay
             loop
             muted
@@ -72,7 +72,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
           <img
             src={project.image_url}
             alt={project.title}
-            className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105"
+            className="w-full h-full object-cover transition-transform duration-700"
           />
         ) : (
           <div className="w-full h-full flex items-center justify-center text-muted-foreground transition-transform duration-700 group-hover:scale-110">
@@ -108,7 +108,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
       </div>
 
       {/* Content */}
-      <div className="flex flex-col flex-1 px-6 pb-6 -mt-1 z-20 relative">
+      <div className="grid grid-rows-[auto_1fr_auto] flex-1 px-5 md:px-6 py-4 md:pb-6 gap-2 z-20 relative">
         <div className="flex items-start justify-between gap-3 mb-2">
           <div className="min-w-0">
             <Badge
@@ -174,12 +174,12 @@ export function ProjectCard({ project }: ProjectCardProps) {
           </div>
         </div>
 
-        <p className="text-gray-400 text-[0.85rem] leading-[1.6] mb-5 flex-1 tracking-tight font-[300]">
+        <p className="text-gray-400 text-[0.82rem] md:text-[0.85rem] leading-[1.6] tracking-tight font-[300] overflow-hidden min-h-[6.6em] max-h-[6.6em] md:min-h-[8em] md:max-h-[9.6em]">
           {project.long_description || project.description}
         </p>
 
         {/* Technologies Footer */}
-        <div className="pt-4 border-t border-white/5 mt-auto">
+        <div className="pt-3 md:pt-4 mt-auto border-t border-white/5">
           <div className="flex flex-wrap gap-2">
             {project.technologies.slice(0, 6).map((tech, i) => (
               <span
