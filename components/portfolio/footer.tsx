@@ -36,7 +36,7 @@ export function Footer() {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer className="bg-[#0b0d11] border-t border-white/5 pt-8 pb-6 md:pt-16 md:pb-8">
+    <footer className="bg-[#0b0d11] border-t border-white/5 pt-8 pb-6 md:pt-10 md:pb-6">
       <div className="max-w-6xl mx-auto px-6">
         {/* Mobile: compact footer */}
         <div className="md:hidden flex flex-col gap-4">
@@ -69,13 +69,17 @@ export function Footer() {
             </div>
           </div>
 
+          {/* Short description */}
+          <p className="text-muted-foreground/80 text-sm leading-relaxed">
+            ICT undergraduate passionate about Backend Development & DevOps. Building scalable systems and cloud-native solutions.          </p>
+
           {/* Mobile nav links (same as desktop, compact) */}
           <div className="flex flex-wrap gap-x-4 gap-y-2">
             {navigationLinks.map((link) => (
               <Link
                 key={link.name}
                 href={link.href}
-                className="text-[12px] font-medium text-muted-foreground/70 hover:text-primary transition-colors"
+                className="text-[13px] font-semibold text-white/70 hover:text-green-400 transition-colors duration-200"
               >
                 {link.name}
               </Link>
@@ -88,7 +92,7 @@ export function Footer() {
         </div>
 
         {/* Desktop: full footer */}
-        <div className="hidden md:grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8 mb-0 md:mb-16">
+        <div className="hidden md:grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8">
           
           {/* Column 1: Brand & Bio */}
           <div className="md:col-span-6 lg:col-span-5 flex flex-col gap-6">
@@ -101,7 +105,7 @@ export function Footer() {
               </span>
             </Link>
             <p className="text-muted-foreground/80 text-sm leading-relaxed max-w-sm">
-              Undergraduate Software Engineer focused on delivering high-impact solutions through leadership and technical excellence.
+              Undergraduate Software Engineer focused on delivering high impact solutions through leadership and technical excellence.
             </p>
           </div>
 
@@ -110,7 +114,7 @@ export function Footer() {
             <h3 className="text-white/90 text-xs font-bold tracking-[0.2em] uppercase mb-6">
               Navigation
             </h3>
-            <ul className="flex flex-col gap-4">
+            <ul className="flex flex-col gap-2">
               {navigationLinks.map((link) => (
                 <li key={link.name}>
                   <Link
@@ -147,7 +151,7 @@ export function Footer() {
                 )
               })}
             </div>
-            <p className="mt-6 text-muted-foreground/60 text-xs font-medium">
+            <p className="mt-22 text-muted-foreground/60 text-xs font-medium">
               © {currentYear} Anushka Lakmal. Professional Portfolio.
             </p>
           </div>

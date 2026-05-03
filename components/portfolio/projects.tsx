@@ -43,7 +43,7 @@ export function Projects() {
         <SectionHeading title="Projects" />
 
         {/* Featured Projects */}
-        <div className="relative px-0 sm:px-12 mb-8 md:mb-10">
+        <div className="relative px-0 sm:px-12 mb-8 md:mb-10 overflow-x-hidden">
           <Carousel
             opts={{
               align: 'start',
@@ -81,8 +81,8 @@ export function Projects() {
                 ))
               )}
             </CarouselContent>
-            <CarouselPrevious className="bg-[#1e2329]/80 h-10 w-10 border-white/10 text-white hover:bg-[#252b32] hover:text-green-500 transition-colors" />
-            <CarouselNext className="bg-[#1e2329]/80 h-10 w-10 border-white/10 text-white hover:bg-[#252b32] hover:text-green-500 transition-colors" />
+            <CarouselPrevious className="hidden sm:flex bg-[#1e2329]/80 h-10 w-10 border-white/10 text-white hover:bg-[#252b32] hover:text-green-500 transition-colors" />
+            <CarouselNext className="hidden sm:flex bg-[#1e2329]/80 h-10 w-10 border-white/10 text-white hover:bg-[#252b32] hover:text-green-500 transition-colors" />
             
             {/* Pagination Dots */}
             <CarouselDots className="mt-6 md:mt-8" />
